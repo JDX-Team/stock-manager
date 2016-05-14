@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "user": "usuario1",
+        "fecMod": 11231232,
+        "roles": [{
+                "id": 1,
+                "rol": "admin"
+            },
+            {
+                "id": 2,
+                "rol": "admin2"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "user": "usuario2",
+        "fecMod": 11231232,
+        "roles": [
+            {
+                "id": 2,
+                "rol": "admin2"
+            }
+        ]
+    }
+]

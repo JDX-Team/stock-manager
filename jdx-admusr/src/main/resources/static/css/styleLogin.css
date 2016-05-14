@@ -1,0 +1,292 @@
+@CHARSET "UTF-8";
+
+/* ******************************************************************************** */
+/* ********************************************** Estilos base: Fuentes, body,... * */
+/* ******************************************************************************** */
+@font-face {
+	font-family: 'opensans-regular';
+	src: url('../../static/fonts/opensans-regular-webfont.eot');
+	src: url('../../static/fonts/opensans-regular-webfont.eot?#iefix')
+		format('embedded-opentype'),
+		url('../../static/fonts/opensans-regular-webfont.woff') format('woff'),
+		url('../../static/fonts/opensans-regular-webfont.ttf')
+		format('truetype'),
+		url('../../static/fonts/opensans-regular-webfont.svg#opensans-regular')
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+::-webkit-input-placeholder {
+	color: #aaaaaa !important;
+}
+
+::-moz-placeholder {
+	color: #aaaaaa !important;
+}
+
+:-ms-input-placeholder {
+	color: #aaaaaa !important;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+	position: relative;
+	font-family: 'opensans-regular' !important;
+	font-size: 12px;
+	line-height: 1.42857;
+	color: #666666;
+	height: 100%;
+}
+
+h1, .h1 {
+	margin: 0;
+	padding-bottom: 10px;
+	color: #ff0000;
+	/* font-size: 27px; */
+	font-size: 27px !important;
+}
+
+h1 .h1 .noSep {
+	border-top: none;
+}
+
+h2, .h2 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-size: 25px;
+	/* font-size: 22px; */
+	color: #ff0000;
+}
+
+h3, .h3 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding: 10px;
+	/* padding: 0 0 10px 0; */
+	background: #F5F5F5;
+	/* background: transparent; */
+	color: #333;
+	/* color: #ff0000; */
+	border-bottom: 1px solid #ddd;
+	/* border: none; */
+	font-size: 17px;
+}
+
+h4, .h4 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 17px;
+	color: #ff0000;
+}
+
+h5, .h5 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+
+h6, .h6 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 13px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: inherit;
+	font-weight: normal;
+	line-height: 1.1;
+	color: #3d3d3d;
+}
+
+h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small,
+	.h1 .small, h2 .small, .h2 .small, h3 .small, .h3 .small {
+	font-size: 65%;
+}
+
+h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small, h4 .small,
+	.h4 .small, h5 .small, .h5 .small, h6 .small, .h6 .small {
+	font-size: 75%;
+}
+
+/* ******************************************************************************** */
+/* ********************************************************************* Cabecera * */
+/* ******************************************************************************** */
+header {
+	background: #131516;
+	width: 100%;
+	min-width: 56em;
+	height: 45px;
+	color: #fff;
+/* 	position: fixed; */
+	z-index: 2000;
+
+}
+
+header h1 {
+	text-indent: -100000px;
+}
+
+header h2 {
+	float: left;
+	font-size: 20px;
+	color: #fff;
+	margin: 10px 0 0 20px;
+}
+
+header .logo {
+	background: url(../../static/images/logo.jpg) no-repeat;
+    background-size: cover;
+    height: 40px;
+    width: 211px;
+    border-right: none;
+    float: left;
+}
+
+header .langToolbar {
+	float: right;
+	width: 300px;
+}
+
+header .langToolbar .langImg {
+	float: right;
+	width: 35px;
+	padding: 5px 2px;
+}
+
+
+/****************************/
+/* 		NAVEGACION 			*/
+/****************************/
+nav.menu {
+	height: 52px;
+	width: 100%;
+	background-color: #3A3A3E;
+	z-index: 90;
+	position: relative;
+	-webkit-box-shadow: 6px 2px 11px -2px rgba(0, 0, 0, 0.65);
+	-moz-box-shadow: 6px 2px 11px -2px rgba(0, 0, 0, 0.65);
+	box-shadow: 6px 2px 11px -2px rgba(0, 0, 0, 0.65);
+}
+
+
+/* *************************************************** */
+/* ***************************** Cuerpo de la Página * */
+/* *************************************************** */
+.bs-lienzo {
+	width: 100% !important;
+	/* height: 100%; */
+}
+
+.bs-principal {
+	margin-top: 125px !important;
+	margin-bottom: 125px !important;
+}
+
+.form-login {
+	min-width: 35em !important;
+	margin: 5px 20% 0 20%;
+	padding: 45px 40px 15px 40px;
+	border: 1px solid #e5e5e5;
+	border-radius: 4px;
+}
+
+
+.form-control {
+	width: 90% !important;
+}
+
+.form-control:focus {
+	border-color: #ad081c !important;
+	box-shadow: 0 1px 1px rgba(102, 102, 102, 1) inset, 0 0 8px
+		rgba(220, 10, 35, 1) !important;
+}
+
+.header-login {
+	
+}
+.header-login p{
+	display: block;
+	width: 350px;
+	margin: auto;
+/* 	color: #ff0000; */
+	font-size: 32px;
+}
+.btn.btn-default {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	float: right;
+	margin-bottom : 5px;
+	margin-right: 50%;
+	margin-top: 10px;
+	padding-bottom: 4px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 4px;
+	background-color: #3A3A3E;
+	border-color: #1B1B1B;
+	color: #FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 400;
+	text-align: center;
+	text-decoration-color: -moz-use-text-color;
+	text-decoration-line: none;
+	text-decoration-style: solid;
+	vertical-align: middle;
+	white-space: nowrap;
+	margin-bottom: 5px;
+}
+
+.btn:focus, .btn:hover {
+	background-color: #ad081c;
+	border-bottom-color: #dc0a23;
+	border-left-color: #dc0a23;
+	border-right-color: #dc0a23;
+	border-top-color: #dc0a23;
+	color: #fff;
+}
+
+h2.error_msg {
+	text-align: center;
+	padding-left: 5%;
+	color: #ff0000;
+	font-size: 14px;
+}
+
+
+/*********************************************/
+/*		FOOTER
+/*********************************************/
+footer{
+	height: 50px;
+	background-color: #3A3A3E;
+	/* bottom: 20px; */
+	z-index: 101;
+	width: 100%;
+	color:white;
+	font-family: 'opensans-regular';
+	font-size: 14px;
+	-webkit-box-shadow: 6px 2px 11px 3px rgba(0, 0, 0, 0.65);
+	-moz-box-shadow: 6px 2px 11px 3px rgba(0, 0, 0, 0.65);
+	box-shadow: 6px 2px 11px 3px rgba(0, 0, 0, 0.65);
+	position: absolute;
+	bottom: 0;
+}
+footer img{
+	float:left;
+	margin-left: 5%;
+	max-height: 50px;
+	display:block;
+	margin-right:10px;
+}
+footer div {
+	padding: 15px;
+	
+}

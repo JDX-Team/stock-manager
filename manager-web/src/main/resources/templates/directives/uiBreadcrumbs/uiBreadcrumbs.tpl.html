@@ -1,0 +1,5 @@
+<ol class="breadcrumb">
+  <li ng-repeat="crumb in breadcrumbs"
+      ng-class="{ active: $last }"><p ng-if="!$last">{{ crumb.displayName }}&nbsp;</p><span ng-show="$last">{{ crumb.displayName }}</span>
+  </li>
+</ol>

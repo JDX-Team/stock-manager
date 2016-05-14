@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>manager-web</artifactId>
+	<packaging>war</packaging>
+
+	<parent>
+		<groupId>com.jdx</groupId>
+		<artifactId>jdx</artifactId>
+		<version>${project.version}</version>
+	</parent>
+
+	<!-- Dependencies list -->
+	<dependencies>
+
+		<dependency>
+			<groupId>com.jdx</groupId>
+			<artifactId>manager-backend</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+
+	</dependencies>
+
+
+	<!-- build phase declaration -->
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19</version>
+				<configuration>
+					<parallel>classes</parallel>
+					<useUnlimitedThreads>true</useUnlimitedThreads>
+					<threadCount>80</threadCount>
+					<perCoreThreadCount>true</perCoreThreadCount>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+</project>

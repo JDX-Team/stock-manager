@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Role detail</h1>
+
+    <form novalidate="novalidate" class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="inputFirstName">Role:</label>
+
+            <div class="controls">
+                <input type="text" id="inputFirstName" ng-model="role.funcionality"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <a ng-click="cancel()" class="btn btn-small">cancel</a>
+                <a ng-click="updateRole()" class="btn btn-small btn-primary">update role</a>
+            </div>
+        </div>
+    </form>
+</div>

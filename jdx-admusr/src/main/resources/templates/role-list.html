@@ -1,0 +1,69 @@
+<div class="span6">
+	<div class="seccion">
+		<form id="roleForm" class="form-inline bs-example" name="roleForm">
+
+			<legend>{{'role.form.new.legend' | translate}}</legend>
+			<div class="form-group">
+				<label for="roleName">{{'role.form.new.label' | translate}}</label>
+				<input type="text" name="roleName" ng-model="newRole.rol" ng-maxlength="20" class="form-control" required="required" ng-disabled="onEdit != undefined"/> 
+				<a ng-click="createNewRole()" class="btn btn-small btn-primary"
+					ng-disabled="roleForm.$invalid" title="{{'form.new' | translate}}">{{'form.new' | translate}}</a>
+					 
+			</div>
+
+		</form>
+	</div>
+
+	<legend>{{'role.table.columnName' | translate}}</legend>
+	<div ng-controller="EntityController">
+		<select
+			name="controllerSelect" 
+			id="controllerSelect"
+			ng-required="required"
+			ng-model="controllerSelected"
+			ng-change="changeController(controllerSelected)"
+			ng-options="option.id as option.controller for option in controllers"
+			ng-disabled="onEdit != undefined"
+			>
+		</select>
+	</div>
+	<table class="table table-striped table-condensed">
+		<thead>
+			<tr>
+				<th style="width: 120px;">{{'role.table.columnName' | translate}}</th>
+				<th ng-repeat="functionality in functionalities" class="centered"
+					style="min-width: 30px;" >
+					{{functionality.controller.controller +'.'+ functionality.action.action | translate}}</th>
+				<th>&nbsp;</th>
+				<!-- celda para redimension -->
+				<th style="width: 20px;">&nbsp;</th>
+				<th style="width: 20px;">&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="role in roles">
+				<td>{{role.rol}}</td>
+				<td ng-repeat="functionality in functionalities" align="center">
+				<input
+					type="checkbox" name="{{role.id}}_{{functionality.id}}"
+					id="{{role.id}}_{{functionality.id}}"
+					ng-checked="isChecked(role,functionality.id)"
+					checklist-model="role.functionalities"
+					checklist-value="functionality"
+					ng-disabled="role.editable != true"
+					 />
+				</td>
+				  <td >&nbsp;</td> <!-- celda para redimension -->
+            <td>
+                <a ng-click="editRole(role.id)" class="fa fa-pencil-square-o fa-2x" ng-show="role.editable != true" ng-disabled="onEdit != undefined && onEdit != role.id" title="{{'form.edit' | translate}}"></a>
+                <a ng-click="saveRole(role.id)" class="fa fa-check fa-2x" ng-show="role.editable == true" title="{{'form.save' | translate}}"></a>
+            </td>
+            <td>
+                <a ng-click="deleteRole(role.id)" class="fa fa-trash fa-2x" ng-show="role.editable != true" ng-disabled="onEdit != undefined && onEdit != role.id" title="{{'form.delete' | translate}}"></a>
+                <a ng-click="cancelEdit(role.id)" class="fa fa-undo fa-2x" ng-show="role.editable == true" title="{{'form.cancel' | translate}}"></a>
+            </td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

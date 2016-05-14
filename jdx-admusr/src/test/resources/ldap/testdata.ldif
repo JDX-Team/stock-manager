@@ -1,0 +1,9 @@
+dn: uid=usuario_prueba2,ou=Usuarios,cn=aaa,o=SEB,c=de,o=group
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: usuario_prueba2
+sn: garcia
+uid: usuario_prueba2
+userPassword: password
