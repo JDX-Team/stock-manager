@@ -288,5 +288,9 @@ footer img{
 }
 footer div {
 	padding: 15px;
-	
+}
+footer h5 {
+	float: left;
+    color: white;
+    margin: 1%;
 }
