@@ -47,8 +47,11 @@
 	<modules>
 		<module>jdx-core</module>
 		<module>jdx-admusr</module>
+		
 		<module>manager-backend</module>
 		<module>manager-web</module>
+
+		<module>jdx-master</module>
 	</modules>
 
 	<dependencies>
