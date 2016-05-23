@@ -1,6 +1,6 @@
 'use strict';
 
-var module = angular.module('app.common.directive');
+var module = angular.module('app.admusr.directive');
 
 //secure-action directive, check if current user have rights for provided operation, else hide the element
 module.directive('secureActionShow', function() {
