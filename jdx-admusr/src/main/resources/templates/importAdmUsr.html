@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	lang="en" ng-app="admusr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="./static/css/style.css " />
+</head>
+<body th:fragment="importAdmUsr">
+
+	<div th:include="importCommon :: importCommon" th:remove="tag"></div>
+
+	<!-- ==================================================================== -->
+	<!-- AngularJS ADMUSR modules ====================================== -->
+	<!-- ==================================================================== -->
+
+	<!-- AngularJS application factory ====================================== -->
+	<script src="./static/js/admusr/factory/GenericFactory.js"
+		type="text/javascript"></script>
+	<script src="./static/js/admusr/factory/EntityFactory.js"
+		type="text/javascript"></script>
+	<script src="./static/js/admusr/factory/FunctionalityFactory.js"
+		type="text/javascript"></script>
+	<script src="./static/js/admusr/factory/RoleFactory.js"
+		type="text/javascript"></script>
+	<script src="./static/js/admusr/factory/UserFactory.js"
+		type="text/javascript"></script>
+
+	<!-- AngularJS application directive ====================================== -->
+
+	<!-- AngularJS application controller ====================================== -->
+	<script src="./static/js/admusr/controller/GenericController.js"
+		type="text/javascript"></script>
+	<script src="./static/js/admusr/controller/EntityController.js"
+		type="text/javascript"></script>
+	<script src="./static/js/admusr/controller/RoleController.js"
+		type="text/javascript"></script>
+	<script src="./static/js/admusr/controller/UserController.js"
+		type="text/javascript"></script>
+
+	<script src="./static/js/admusr/admusr.js" type="text/javascript"></script>
+
+</body>
+</html>

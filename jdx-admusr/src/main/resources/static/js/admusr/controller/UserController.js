@@ -2,23 +2,23 @@
 
 /* Controllers */
 
-var app = angular.module('admusr.user',['admusr.service']);
+var app = angular.module('app.admusr.controller');
 
-app.controller('UserListController', ['$scope', 'UsersService','RolesService', '$location','ModalService',
-    function ($scope, UsersService, RolesService, $location, ModalService) {
+app.controller('UserListController', ['$scope', 'UsersFactory','RolesFactory', '$location','ModalFactory',
+    function ($scope, UsersFactory, RolesFactory, $location, ModalFactory) {
 
-	 	$scope.users = UsersService.list();
-	 	$scope.roles = RolesService.list();
+	 	$scope.users = UsersFactory.list();
+	 	$scope.roles = RolesFactory.list();
 	 	$scope.onEdit=undefined;
 
         // callback for ng-click 'deleteUser'
         $scope.deleteUser = function (userId) {
         	//Display question modal, remove user on succhess callback
-        	ModalService.question("Remove","Are you sure want to remove the user from the system?",function(){
-        		UsersService.remove({ id: userId }).$promise.then(
+        	ModalFactory.question("Remove","Are you sure want to remove the user from the system?",function(){
+        		UsersFactory.remove({ id: userId }).$promise.then(
             	    //success
             	    function( value ){
-            	    	$scope.users = UsersService.list();
+            	    	$scope.users = UsersFactory.list();
                 });
         	},function(){});
         };
@@ -33,27 +33,27 @@ app.controller('UserListController', ['$scope', 'UsersService','RolesService', '
         // callback for ng-click 'editUser':
         $scope.cancelEdit = function () {
         	this.user.editable=false;
-        	$scope.users = UsersService.list();
+        	$scope.users = UsersFactory.list();
         	$scope.onEdit=undefined;
         };
         
         //callback for click on save user
         $scope.saveUser = function () {
-        	UsersService.update(this.user).$promise.then(
+        	UsersFactory.update(this.user).$promise.then(
             	    //success
             	    function( value ){
-            	    	$scope.users = UsersService.list();
+            	    	$scope.users = UsersFactory.list();
             	    	$scope.onEdit=undefined;
                 });
         };
 
 		// callback for ng-click 'createUser':
         $scope.createNewUser = function () {
-        	UsersService.create($scope.newUser).$promise.then(
+        	UsersFactory.create($scope.newUser).$promise.then(
             	    //success
             	    function( value ){
             	    	$scope.newUser.user = '';
-            	    	$scope.users = UsersService.list();
+            	    	$scope.users = UsersFactory.list();
             	    	$scope.onEdit=undefined;
                 });
             
@@ -70,12 +70,12 @@ app.controller('UserListController', ['$scope', 'UsersService','RolesService', '
 		};
     }]);
 //
-app.controller('UserDetailController', ['$scope', '$routeParams', 'UsersService', '$location',
-    function ($scope, $routeParams, UsersService, $location) {
+app.controller('UserDetailController', ['$scope', '$routeParams', 'UsersFactory', '$location',
+    function ($scope, $routeParams, UsersFactory, $location) {
 
         // callback for ng-click 'updateUser':
         $scope.updateUser = function () {
-        	UsersService.update($scope.user);
+        	UsersFactory.update($scope.user);
             $location.path('/user-list');
         };
 
@@ -84,7 +84,7 @@ app.controller('UserDetailController', ['$scope', '$routeParams', 'UsersService'
             $location.path('/user-list');
         };
 
-        $scope.user = UsersService.get({id: $routeParams.id});
+        $scope.user = UsersFactory.get({id: $routeParams.id});
     }]);
 
 

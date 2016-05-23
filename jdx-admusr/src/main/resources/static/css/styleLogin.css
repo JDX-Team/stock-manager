@@ -29,17 +29,12 @@
 	color: #aaaaaa !important;
 }
 
-html {
-    height: 100%;
-}
-
 body {
 	position: relative;
 	font-family: 'opensans-regular' !important;
 	font-size: 12px;
 	line-height: 1.42857;
 	color: #666666;
-	height: 100%;
 }
 
 h1, .h1 {
@@ -116,7 +111,7 @@ h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small, h4 .small,
 /* ********************************************************************* Cabecera * */
 /* ******************************************************************************** */
 header {
-	background: #131516;
+	background: #ff0000;
 	width: 100%;
 	min-width: 56em;
 	height: 45px;
@@ -138,12 +133,11 @@ header h2 {
 }
 
 header .logo {
-	background: url(../../static/images/logo.jpg) no-repeat;
-    background-size: cover;
-    height: 40px;
-    width: 211px;
-    border-right: none;
-    float: left;
+/* 	background: url(../../static/images/logo.png) no-repeat; */
+	height: 40px;
+	width: 155px;
+	border-right: 1px solid #e90000;
+	float: left;
 }
 
 header .langToolbar {
@@ -164,12 +158,9 @@ header .langToolbar .langImg {
 nav.menu {
 	height: 52px;
 	width: 100%;
-	background-color: #3A3A3E;
+	background: #fff url(../images/bg_menu.png);
 	z-index: 90;
 	position: relative;
-	-webkit-box-shadow: 6px 2px 11px -2px rgba(0, 0, 0, 0.65);
-	-moz-box-shadow: 6px 2px 11px -2px rgba(0, 0, 0, 0.65);
-	box-shadow: 6px 2px 11px -2px rgba(0, 0, 0, 0.65);
 }
 
 
@@ -178,7 +169,6 @@ nav.menu {
 /* *************************************************** */
 .bs-lienzo {
 	width: 100% !important;
-	/* height: 100%; */
 }
 
 .bs-principal {
@@ -220,17 +210,19 @@ nav.menu {
 	-moz-border-left-colors: none;
 	-moz-border-right-colors: none;
 	-moz-border-top-colors: none;
-	float: right;
-	margin-bottom : 5px;
+	float: right; margin-bottom : 5px;
 	margin-right: 50%;
 	margin-top: 10px;
 	padding-bottom: 4px;
 	padding-left: 15px;
 	padding-right: 15px;
 	padding-top: 4px;
-	background-color: #3A3A3E;
-	border-color: #1B1B1B;
-	color: #FFFFFF;
+	background-color: #dc0a23;
+	border-bottom-color: #ad081c;
+	border-left-color: #ad081c;
+	border-right-color: #ad081c;
+	border-top-color: #ad081c;
+	color: #fff;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 15px;
@@ -266,18 +258,13 @@ h2.error_msg {
 /*********************************************/
 footer{
 	height: 50px;
-	background-color: #3A3A3E;
-	/* bottom: 20px; */
+	background: #fff url(../images/bg_menu.png);
+	bottom: 0px;
 	z-index: 101;
 	width: 100%;
 	color:white;
 	font-family: 'opensans-regular';
 	font-size: 14px;
-	-webkit-box-shadow: 6px 2px 11px 3px rgba(0, 0, 0, 0.65);
-	-moz-box-shadow: 6px 2px 11px 3px rgba(0, 0, 0, 0.65);
-	box-shadow: 6px 2px 11px 3px rgba(0, 0, 0, 0.65);
-	position: absolute;
-	bottom: 0;
 }
 footer img{
 	float:left;
@@ -288,9 +275,5 @@ footer img{
 }
 footer div {
 	padding: 15px;
-}
-footer h5 {
-	float: left;
-    color: white;
-    margin: 1%;
+	
 }

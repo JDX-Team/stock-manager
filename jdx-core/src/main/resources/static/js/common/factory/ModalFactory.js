@@ -1,8 +1,8 @@
-/* Services common*/
-var services = angular.module('common.service',
-		[ 'ngResource', 'ui.bootstrap' ]);
+'use strict';
+/* Factorys common*/
+var module = angular.module('app.common.factory');
 
-services.factory('ModalService', function($resource, $uibModal) {
+module.factory('ModalFactory', function($resource, $uibModal) {
 	return {
 		// Modal question type
 		question : function(title, msg, success, cancel) {
@@ -69,7 +69,7 @@ services.factory('ModalService', function($resource, $uibModal) {
 			});
 
 		},
-		info : function(msg, msg) {
+		info : function(msg, messsage) {
 			// Instantiate error type modal
 			var modalInstance = $uibModal.open({
 				templateUrl : 'modal/modalInfo.html',
@@ -82,7 +82,7 @@ services.factory('ModalService', function($resource, $uibModal) {
 					},
 					msg : function() // scope del modal
 					{
-						return msg;
+						return messsage;
 					}
 				}
 			});

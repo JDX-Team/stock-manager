@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="IE=11" />
-<title>JDX Panel</title>
+<title>Stock Manager</title>
 
 <!-- CSS styles ================================================================ -->
 <!-- Bootstrap ================================================================= -->
@@ -22,8 +22,7 @@
 
 
 <!-- loading bar -->
-<link rel="stylesheet" href="./static/css/loading-bar.min.css"
-	type='text/css' media='all' />
+<link rel="stylesheet" href="./static/css/loading-bar.min.css" type='text/css' media='all' />
 <!-- Application styles -->
 <link rel="stylesheet" href="./static/css/style.css " />
 
@@ -65,9 +64,9 @@
 		<!-- Application header -->
 		<header>
 			<div class="contenedor">
-<!-- 				<div class="logo"> -->
-<!-- 					<h1>Nockpoint</h1> -->
-<!-- 				</div> -->
+				<div class="logo">
+					<h1>Bussiness</h1>
+				</div>
 				<h2>Stock manager</h2>
 
 			</div>
@@ -126,58 +125,23 @@
 			<div>&#169; Todos los derechos reservados 2016</div>
 		</footer>
 	</div>
-	<!-- JQuery ================================================================ -->
-	<script src="./static/js/lib/jquery-1.12.0.min.js"></script>
-	<!-- JQuery plugins -->
-	<script src="./static/js/lib/jquery.dataTables.js"></script>
-	<!-- AngularJS ============================================================= -->
-	<script src="./static/js/lib/angular.min.js"></script>
-	<!-- AngularJS extensions ================================================== -->
-	<script src="./static/js/lib/angular-datatables.min.js"></script>
-	<script src="./static/js/lib/bootstrap.js"></script>
-	<script src="./static/js/lib/angular-resource.min.js"></script>
-	<script src="./static/js/lib/angular-route.min.js"></script>
-	<script src="./static/js/lib/angular-cookies.min.js"></script>
-	<script src="./static/js/lib/angular-animate.min.js"></script>
-	<script src="./static/js/lib/loading-bar.min.js"></script>
-	<script src="./static/js/lib/angular-checklist-model.js"></script>
-	<script src="./static/js/lib/angular-translate.js"></script>
-	<script src="./static/js/lib/angular-ui-router.min.js"></script>
-	<script src="./static/js/lib/uiBreadcrumbs.js"></script>
+	
+	<!-- Import js /angular dependencies -->
+	<div th:include="importAdmUsr :: importAdmUsr" th:remove="tag"></div>	
+	
+	<!-- App StockManager Factory ========================================= -->	
+	<script src="./static/js/stkmng/factory/GenericFactory.js" type="text/javascript"></script>
 
-	<!-- Bootstrap extensions ================================================== -->
-	<script src="./static/js/lib/ui-bootstrap-tpls-0.14.3.min.js"></script>
-
-	<!-- ======================================================================= -->
-	<!-- AngularJS application modules ========================================= -->
-	<!-- ======================================================================= -->
-
-	<!-- Modules load ========================================= -->
-	<script src="./static/js/common/common.js" type="text/javascript"></script>
+	<!-- App StockManager Directive ========================================= -->	
+	<script src="./static/js/stkmng/directive/GenericDirective.js" type="text/javascript"></script>
 	
-
-	<!-- Common controller ========================================= -->
-	<script src="./static/js/common/controller/GenericController.js" type="text/javascript"></script>
-	<script src="./static/js/common/controller/MenuController.js" type="text/javascript"></script>
-	<script src="./static/js/common/controller/ModalController.js" type="text/javascript"></script>
+	<!-- App StockManager Controller ========================================= -->	
+	<script src="./static/js/stkmng/controller/GenericController.js" type="text/javascript"></script>
 	
-	<!-- Common services ========================================= -->
-	<script src="./static/js/common/service/GenericService.js" type="text/javascript"></script>
-	<script src="./static/js/common/service/CommonService.js" type="text/javascript"></script>
-	<script src="./static/js/common/service/MenuService.js" type="text/javascript"></script>
-	<script src="./static/js/common/service/ModalService.js" type="text/javascript"></script>
-	
-	
-	<!-- Common directives ========================================= -->	
-	<script src="./static/js/common/directive/GenericDirective.js" type="text/javascript"></script>
-	<script src="./static/js/common/directive/MenuDirective.js" type="text/javascript"></script>
-	<script src="./static/js/common/directive/LoadingDirective.js" type="text/javascript"></script>
-	
+	<!-- App StockManager Config ========================================= -->	
+	<script src="./static/js/stkmng/stkmng.js" type="text/javascript"></script>
 	
 	<!-- Module Aplication========================================= -->
-
-	
-	
 	<script src="./static/js/app.js" type="text/javascript"></script>
 
 </body>

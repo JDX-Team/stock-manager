@@ -2,29 +2,27 @@
 
 /* Controllers */
 
-var app = angular.module('admusr.role', [ 'admusr.entity.select',
-		'admusr.service' ]);
+var app = angular.module('app.admusr.controller');
 
 /**
  * Definición del controlador de Roles
  */
-app
-		.controller(
+app.controller(
 				'RoleListController',
 				[
 						'$scope',
 						'$rootScope',
-						'RolesService',
-						'FunctionalityService',
+						'RolesFactory',
+						'FunctionalityFactory',
 						'$location',
-						'ModalService',
-						function($scope, $rootScope, RolesService,
-								FunctionalityService, $location, ModalService) {
+						'ModalFactory',
+						function($scope, $rootScope, RolesFactory,
+								FunctionalityFactory, $location, ModalFactory) {
 
 							/*
 							 * Inicialización de datos y carga inicial
 							 */
-							$scope.roles = RolesService.list();//Traemos todos los roles
+							$scope.roles = RolesFactory.list();//Traemos todos los roles
 							$scope.onEdit=undefined;
 							$scope.sendController = undefined; 
 							/*
@@ -34,31 +32,31 @@ app
 							$scope.$on('changeEntity', function(e,args) {
 								
 								$scope.sendController = {'controller':{'id':args}};
-								$scope.functionalities = FunctionalityService.listByController($scope.sendController);
+								$scope.functionalities = FunctionalityFactory.listByController($scope.sendController);
 							});
 
 							// callback for ng-change 'changeController':
 							$scope.changeController = function(controller) {
 								var sendController = {'controller':{'id':controller}};
-								$scope.functionalities = FunctionalityService.listByController(sendController);
+								$scope.functionalities = FunctionalityFactory.listByController(sendController);
 							};
 							
 							// callback for ng-click 'deleteRole'
 							$scope.deleteRole = function(roleId) {
 								// Display question modal, remove role on
 								// succhess callback
-								ModalService
+								ModalFactory
 										.question(
 												"Remove",
 												"Are you sure want to remove the role from the system?",
 												function() {
-													RolesService.remove({
+													RolesFactory.remove({
 														id : roleId
 													}).$promise
 															.then(
 															// success
 															function(value) {
-																$scope.roles = RolesService.list();
+																$scope.roles = RolesFactory.list();
 															});
 												}, function() {
 												});
@@ -73,31 +71,31 @@ app
 							// callback for ng-click 'editRole':
 							$scope.cancelEdit = function() {
 								this.role.editable = false;
-								$scope.roles = RolesService.list();
-								$scope.functionalities = FunctionalityService.listByController($scope.sendController);
+								$scope.roles = RolesFactory.list();
+								$scope.functionalities = FunctionalityFactory.listByController($scope.sendController);
 								$scope.onEdit = undefined;
 							};
 
 							// callback for click on save role
 							$scope.saveRole = function() {
-								RolesService.update(this.role).$promise.then(
+								RolesFactory.update(this.role).$promise.then(
 								// success
 								function(value) {
-									$scope.roles = RolesService.list();
-									$scope.functionalities = FunctionalityService.listByController($scope.sendController);
+									$scope.roles = RolesFactory.list();
+									$scope.functionalities = FunctionalityFactory.listByController($scope.sendController);
 									$scope.onEdit = undefined;
 								});
 							};
 
 							// callback for ng-click 'createRole':
 							$scope.createNewRole = function() {
-								RolesService.create($scope.newRole).$promise
+								RolesFactory.create($scope.newRole).$promise
 										.then(
 										// success
 										function(value) {
 											$scope.newRole.rol = '';
-											$scope.roles = RolesService.list();
-											$scope.functionalities = FunctionalityService.listByController($scope.sendController);
+											$scope.roles = RolesFactory.list();
+											$scope.functionalities = FunctionalityFactory.listByController($scope.sendController);
 											$scope.onEdit = undefined;
 										});
 
@@ -115,12 +113,12 @@ app
 						} ]);
 //
 app.controller('RoleDetailController', [ '$scope', '$routeParams',
-		'RolesService', '$location',
-		function($scope, $routeParams, RolesService, $location) {
+		'RolesFactory', '$location',
+		function($scope, $routeParams, RolesFactory, $location) {
 
 			// callback for ng-click 'updateRole':
 			$scope.updateRole = function() {
-				RolesService.update($scope.role);
+				RolesFactory.update($scope.role);
 				$location.path('/role-list');
 			};
 
@@ -129,7 +127,7 @@ app.controller('RoleDetailController', [ '$scope', '$routeParams',
 				$location.path('/role-list');
 			};
 
-			$scope.role = RolesService.get({
+			$scope.role = RolesFactory.get({
 				id : $routeParams.id
 			});
 		} ]);

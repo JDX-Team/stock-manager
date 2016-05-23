@@ -1,5 +1,7 @@
 var app = angular.module('app', [
-	                          'app.sige',
+	                          'app.common',
+	                          'app.admusr',
+	                          'app.stkmng',//Referencia al aplicativo stockManager
 	                          'ngCookies',
 	                          'angular-loading-bar',
 	                          'ngAnimate',
