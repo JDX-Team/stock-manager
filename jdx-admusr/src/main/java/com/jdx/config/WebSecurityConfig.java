@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.jdx.admusr.security.DatabaseUserDetailsService;
+
 /**
  * Fichero de configuracion de la Seguridad web para JDX
  *
@@ -43,10 +45,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService);
+        authenticationProvider.setUserDetailsService(customUserDetailsService());
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
+    
+    @Bean
+    public UserDetailsService customUserDetailsService() {
+    	return new DatabaseUserDetailsService();
+    }
+    
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
