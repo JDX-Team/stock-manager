@@ -75,8 +75,7 @@ public class JpaDatabaseConfiguration {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
 		em.setPackagesToScan(new String[] {
-				"com.jdx.common.model",
-				"com.jdx.test.common.model",
+				"com.jdx.*.model",
 				"org.springframework.data.jpa.convert.threeten" });
 
 		em.setJpaVendorAdapter(jpaVendorAdapter());
