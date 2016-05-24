@@ -39,6 +39,8 @@ public class UserRepositoryTest extends AbstractTransactionalJUnit4SpringContext
 		UserEntity userEntity = new UserEntity();
 		 
 		userEntity.setUser("usuario_prueba2");
+		userEntity.setPassword("pwd");
+		
 		RoleEntity roleEntity = new RoleEntity();
 		//Rol id 1 -- > SuperAdmin
 		roleEntity.setId(1);
@@ -74,6 +76,7 @@ public class UserRepositoryTest extends AbstractTransactionalJUnit4SpringContext
 		 UserEntity user = userRepo.read(this.id);
 		 
 		 user.setUser("usuario_modificado");
+		 user.setPassword("pwd");
 		 
 		 userRepo.update(user);
 		 

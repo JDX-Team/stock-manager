@@ -88,6 +88,7 @@ public class UserRestTest extends ControllerTest {
 		//Create new user
 		UserEntity userEntity = new UserEntity();
 		userEntity.setUser("usuario_prueba2");
+		userEntity.setPassword("pwd");
 
 		//perform post operation over /users url
 		ResultActions result = mockMvc.perform(post("/users").contentType(MediaType.APPLICATION_JSON)
@@ -108,6 +109,7 @@ public class UserRestTest extends ControllerTest {
 		//Create new user
 		UserEntity userEntity = new UserEntity();
 		userEntity.setUser("usuario_no_ldap");
+		userEntity.setPassword("pwd");
 
 		//perform post operation over /users url
 		ResultActions result = mockMvc.perform(
