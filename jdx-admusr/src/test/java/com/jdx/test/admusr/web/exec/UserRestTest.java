@@ -44,7 +44,7 @@ import com.jdx.test.config.LdapConfig;
 		initializers = BootStrapInitializer.class,
 		classes = { 
 					InMemoryJpaDatabaseConfiguration.class,
-					LdapConfig.class,
+//					LdapConfig.class,
 					AdmUsrServiceConfig.class,
 					AdmUsrWebConfiguration.class
 				})

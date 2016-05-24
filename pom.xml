@@ -36,7 +36,7 @@
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<spring-security.version>4.0.0.RELEASE</spring-security.version>
 		<spring-ws.version>2.2.1.RELEASE</spring-ws.version>
-		<spring-ldap-core.version>2.0.3.RELEASE</spring-ldap-core.version>
+		<spring-ldap-core.version>2.1.0.RELEASE</spring-ldap-core.version>
 		<httpclient.version>4.5.1</httpclient.version>
 		<apache-ws-security.version>1.6.18</apache-ws-security.version>
 		<apache-tomcat-data-source.version>8.0.23</apache-tomcat-data-source.version>

@@ -10,7 +10,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -32,9 +31,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan(
 		basePackages={
-						"com.jdx.common.repository",
-						"com.jdx.test",
-						"com.jdx.common.exception"
+						"com.jdx.common.*",
+						"com.jdx.admusr.*"
 					})
 public class InMemoryJpaDatabaseConfiguration {
 	
@@ -95,6 +93,7 @@ public class InMemoryJpaDatabaseConfiguration {
 		em.setDataSource(dataSource);
 		em.setPackagesToScan(new String[] {
 				"com.jdx.common.model",
+				"com.jdx.admusr.model",
 				"com.jdx.test.common.model",
 				"org.springframework.data.jpa.convert.threeten" });
 
