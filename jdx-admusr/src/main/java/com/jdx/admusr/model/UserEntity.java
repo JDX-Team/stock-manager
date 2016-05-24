@@ -3,8 +3,10 @@ package com.jdx.admusr.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,6 +45,10 @@ public class UserEntity {
 	@Column(name="usuario",length=50)
 	private String user;
 	
+	@Basic(fetch = FetchType.LAZY)
+	@Column(name="password",length=100)
+	private String password;
+
 	@Version
 	@Column(name="fec_mod")
 	private Date fecMod;
@@ -86,6 +92,22 @@ public class UserEntity {
 	 */
 	public void setUser(String user) {
 		this.user = user;
+	}
+
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 
