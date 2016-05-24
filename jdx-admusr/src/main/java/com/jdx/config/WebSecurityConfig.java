@@ -30,11 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      
 	
 	@Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//            .jdbcAuthentication()
-//                .withUser("admin").password("nimda").roles("ADMIN");
-        
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {        
         auth.authenticationProvider(authenticationProvider());
     }
 	

@@ -1,4 +1,4 @@
-package com.jdx.admusr.service;
+package com.jdx.admusr.security;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import com.jdx.admusr.service.interfaces.UserService;
  * 
  */
 @Service("customUserDetailsService")
-public class CustomUserDetailsService implements UserDetailsService {
+public class DatabaseUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	UserService userService;
