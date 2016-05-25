@@ -1,6 +1,6 @@
 package com.jdx.admusr.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -51,7 +51,7 @@ public class UserEntity {
 
 	@Version
 	@Column(name="fec_mod")
-	private Date fecMod;
+	private Timestamp fecMod;
 	
 	
 	@ManyToMany()
@@ -114,7 +114,7 @@ public class UserEntity {
 	/**
 	 * @return the fecMod
 	 */
-	public Date getFecMod() {
+	public Timestamp getFecMod() {
 		return fecMod;
 	}
 
@@ -122,7 +122,7 @@ public class UserEntity {
 	/**
 	 * @param fecMod the fecMod to set
 	 */
-	public void setFecMod(Date fecMod) {
+	public void setFecMod(Timestamp fecMod) {
 		this.fecMod = fecMod;
 	}
 

@@ -1,6 +1,6 @@
 package com.jdx.admusr.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -45,7 +45,7 @@ public class RoleEntity {
 	
 	@Version
 	@Column(name="fec_mod")
-	private Date fecMod;
+	private Timestamp fecMod;
 	
 	@ManyToMany
 	@JoinTable(name = "ADM_ER_rol_funcionalidad", joinColumns = { 
@@ -92,14 +92,14 @@ public class RoleEntity {
 	/**
 	 * @return the fecMod
 	 */
-	public Date getFecMod() {
+	public Timestamp getFecMod() {
 		return fecMod;
 	}
 
 	/**
 	 * @param fecMod the fecMod to set
 	 */
-	public void setFecMod(Date fecMod) {
+	public void setFecMod(Timestamp fecMod) {
 		this.fecMod = fecMod;
 	}
 

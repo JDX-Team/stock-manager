@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -35,7 +36,6 @@ import com.jdx.config.AdmUsrServiceConfig;
 import com.jdx.config.AdmUsrWebConfiguration;
 import com.jdx.test.common.web.ControllerTest;
 import com.jdx.test.config.InMemoryJpaDatabaseConfiguration;
-import com.jdx.test.config.LdapConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -151,7 +151,7 @@ public class UserRestTest extends ControllerTest {
 		UserEntity userEntity = new UserEntity();
 		userEntity.setId(1);
 		userEntity.setUser("root");
-		userEntity.setFecMod(new Date(1450825200000L));
+		userEntity.setFecMod(new Timestamp(new Date(1450825200000L).getTime()));
 		
 		RoleEntity roleEntity = new RoleEntity();
 		roleEntity.setId(1);
