@@ -1,3 +1,3 @@
 # stock-manager
-simple stock manager using spring, hibernate, angularjs.
+simple stock manager using spring, hibernate, angularjs. prueba merge
 <edit>
