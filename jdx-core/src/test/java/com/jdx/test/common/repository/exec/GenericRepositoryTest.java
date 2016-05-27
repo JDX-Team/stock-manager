@@ -16,11 +16,11 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.jdx.common.config.basic.BootStrapInitializer;
 import com.jdx.common.exception.RepoTechnicalException;
 import com.jdx.test.common.model.GenericEntity;
 import com.jdx.test.common.model.GenericRelEntity;
 import com.jdx.test.common.repository.interfaces.IGenericRepository;
+import com.jdx.test.config.BootStrapInitializer;
 import com.jdx.test.config.InMemoryJpaDatabaseConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)

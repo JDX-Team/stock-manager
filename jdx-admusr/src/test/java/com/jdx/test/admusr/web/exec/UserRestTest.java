@@ -31,10 +31,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jdx.admusr.model.RoleEntity;
 import com.jdx.admusr.model.UserEntity;
 import com.jdx.admusr.web.UserRestController;
-import com.jdx.common.config.basic.BootStrapInitializer;
 import com.jdx.config.AdmUsrServiceConfig;
 import com.jdx.config.AdmUsrWebConfiguration;
 import com.jdx.test.common.web.ControllerTest;
+import com.jdx.test.config.BootStrapInitializer;
 import com.jdx.test.config.InMemoryJpaDatabaseConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -14,6 +14,10 @@ import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.jdx.common.errors.web.GlobalDefaultExceptionHandler;
 import com.jdx.common.web.GenericController;
 
+/**
+ * Abstract class to offer a basic configuration for controller layer tests
+ *
+ */
 public abstract class ControllerTest extends AbstractTransactionalJUnit4SpringContextTests {
 	
 	protected MockMvc mockMvc;

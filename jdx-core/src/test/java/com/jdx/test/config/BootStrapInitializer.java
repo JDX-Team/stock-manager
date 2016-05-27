@@ -1,4 +1,4 @@
-package com.jdx.common.config.basic;
+package com.jdx.test.config;
 
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;

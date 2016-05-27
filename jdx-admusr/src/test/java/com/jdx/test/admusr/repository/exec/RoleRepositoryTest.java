@@ -17,7 +17,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.jdx.admusr.model.RoleEntity;
 import com.jdx.admusr.repository.interfaces.RoleRepository;
-import com.jdx.common.config.basic.BootStrapInitializer;
+import com.jdx.test.config.BootStrapInitializer;
 import com.jdx.test.config.InMemoryJpaDatabaseConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)

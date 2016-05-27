@@ -20,8 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.jdx.common.config.basic.BootStrapInitializer;
 import com.jdx.common.web.FrontMessagesController;
+import com.jdx.test.config.BootStrapInitializer;
 import com.jdx.test.config.InMemoryJpaDatabaseConfiguration;
 import com.jdx.test.config.WebMvcConfiguration;
 
