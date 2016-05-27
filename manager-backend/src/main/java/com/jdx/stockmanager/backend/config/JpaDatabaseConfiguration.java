@@ -1,5 +1,7 @@
 package com.jdx.stockmanager.backend.config;
 
+import java.util.Properties;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -77,8 +79,15 @@ public class JpaDatabaseConfiguration {
 		em.setPackagesToScan(new String[] {
 				"com.jdx.*.model",
 				"org.springframework.data.jpa.convert.threeten" });
+		
+		Properties jpaProperties = new Properties();
+		jpaProperties.put("hibernate.hbm2ddl.auto", "validate");
+		
+		em.setJpaProperties(jpaProperties);
 
 		em.setJpaVendorAdapter(jpaVendorAdapter());
+		
+		
 		return em;
 	}
     
