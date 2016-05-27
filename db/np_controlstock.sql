@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: np_controlstock
 -- ------------------------------------------------------
--- Server version	5.5.43
+-- Server version	5.5.5-10.1.10-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -243,8 +243,248 @@ INSERT INTO `adm_usuarios` VALUES (1,'root','$2a$10$0LEKJb8nQxMzdRlULo7B7uOqXU6w
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'np_controlstock'
+-- Table structure for table `stk_items`
 --
+
+DROP TABLE IF EXISTS `stk_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stk_items` (
+  `id_item` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `photo` varchar(45) DEFAULT NULL,
+  `id_product` int(11) NOT NULL,
+  `fec_mod` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fec_delete` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_item`),
+  KEY `id_product_idx` (`id_product`),
+  CONSTRAINT `id_product` FOREIGN KEY (`id_product`) REFERENCES `stk_products` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stk_items`
+--
+
+LOCK TABLES `stk_items` WRITE;
+/*!40000 ALTER TABLE `stk_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stk_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stk_locations`
+--
+
+DROP TABLE IF EXISTS `stk_locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stk_locations` (
+  `id_location` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `id_warehouse` int(11) NOT NULL,
+  PRIMARY KEY (`id_location`),
+  KEY `id_warehouse_idx` (`id_warehouse`),
+  CONSTRAINT `id_warehouse` FOREIGN KEY (`id_warehouse`) REFERENCES `stk_warehouse` (`id_warehouse`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stk_locations`
+--
+
+LOCK TABLES `stk_locations` WRITE;
+/*!40000 ALTER TABLE `stk_locations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stk_locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stk_orders`
+--
+
+DROP TABLE IF EXISTS `stk_orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stk_orders` (
+  `id_order` int(11) NOT NULL AUTO_INCREMENT,
+  `supplier` varchar(50) NOT NULL,
+  `fec_order` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_order`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stk_orders`
+--
+
+LOCK TABLES `stk_orders` WRITE;
+/*!40000 ALTER TABLE `stk_orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stk_orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stk_orders_items`
+--
+
+DROP TABLE IF EXISTS `stk_orders_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stk_orders_items` (
+  `id_order` int(11) NOT NULL,
+  `id_item` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  PRIMARY KEY (`id_order`,`id_item`),
+  KEY `stok_oriders_items.id_item_idx` (`id_item`),
+  CONSTRAINT `stk_orders_items.id_order` FOREIGN KEY (`id_order`) REFERENCES `stk_orders` (`id_order`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `stok_oriders_items.id_item` FOREIGN KEY (`id_item`) REFERENCES `stk_items` (`id_item`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stk_orders_items`
+--
+
+LOCK TABLES `stk_orders_items` WRITE;
+/*!40000 ALTER TABLE `stk_orders_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stk_orders_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stk_products`
+--
+
+DROP TABLE IF EXISTS `stk_products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stk_products` (
+  `id_product` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `photo` varchar(45) DEFAULT NULL,
+  `fec_mod` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `fec_delete` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_product`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stk_products`
+--
+
+LOCK TABLES `stk_products` WRITE;
+/*!40000 ALTER TABLE `stk_products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stk_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stk_reasons`
+--
+
+DROP TABLE IF EXISTS `stk_reasons`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stk_reasons` (
+  `id_reason` int(11) NOT NULL AUTO_INCREMENT,
+  `reason` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_reason`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stk_reasons`
+--
+
+LOCK TABLES `stk_reasons` WRITE;
+/*!40000 ALTER TABLE `stk_reasons` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stk_reasons` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stk_stock`
+--
+
+DROP TABLE IF EXISTS `stk_stock`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stk_stock` (
+  `id_stock` int(11) NOT NULL AUTO_INCREMENT,
+  `amount` int(11) NOT NULL,
+  `id_item` int(11) NOT NULL,
+  `id_location` int(11) NOT NULL,
+  `fec_mod` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_stock`),
+  KEY `id_item_idx` (`id_item`),
+  KEY `id_location_idx` (`id_location`),
+  CONSTRAINT `id_item` FOREIGN KEY (`id_item`) REFERENCES `stk_items` (`id_item`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_location` FOREIGN KEY (`id_location`) REFERENCES `stk_locations` (`id_location`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stk_stock`
+--
+
+LOCK TABLES `stk_stock` WRITE;
+/*!40000 ALTER TABLE `stk_stock` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stk_stock` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stk_stock_history`
+--
+
+DROP TABLE IF EXISTS `stk_stock_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stk_stock_history` (
+  `id_stock_history` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `comment` varchar(200) DEFAULT NULL,
+  `id_reason` int(11) DEFAULT NULL,
+  `id_stock` int(11) NOT NULL,
+  `fec_add` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_stock_history`),
+  KEY `id_stock_idx` (`id_stock`),
+  KEY `id_reason_idx` (`id_reason`),
+  KEY `id_user_idx` (`id_user`),
+  CONSTRAINT `id_reason` FOREIGN KEY (`id_reason`) REFERENCES `stk_reasons` (`id_reason`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_stock` FOREIGN KEY (`id_stock`) REFERENCES `stk_stock` (`id_stock`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `adm_usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stk_stock_history`
+--
+
+LOCK TABLES `stk_stock_history` WRITE;
+/*!40000 ALTER TABLE `stk_stock_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stk_stock_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stk_warehouse`
+--
+
+DROP TABLE IF EXISTS `stk_warehouse`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stk_warehouse` (
+  `id_warehouse` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_warehouse`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stk_warehouse`
+--
+
+LOCK TABLES `stk_warehouse` WRITE;
+/*!40000 ALTER TABLE `stk_warehouse` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stk_warehouse` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -255,4 +495,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-25 19:35:31
+-- Dump completed on 2016-05-27 12:39:35
