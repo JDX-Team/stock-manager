@@ -31,7 +31,7 @@ public abstract interface GenericService<E> {
 	 * 
 	 * @return entity read
 	 */
-	public E read(int id);
+	public E read(E entity);
 	
 	/**
 	 * 
@@ -43,6 +43,6 @@ public abstract interface GenericService<E> {
 	 * 
 	 * @return entity delete
 	 */
-	public void delete(Integer id);
+	public void delete(E entity);
 
 }

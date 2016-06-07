@@ -31,7 +31,7 @@ public abstract interface GenericRepository<E> {
 	 * @param id entity identifier
 	 * @return found entity
 	 */
-	public E read(Integer id);
+	public E read(E entity);
 	
 	/**
 	 * Basic method for persist given entity
@@ -52,7 +52,7 @@ public abstract interface GenericRepository<E> {
 	 * 
 	 * @param entity to delete
 	 */
-	public void delete(Integer id);
+	public void delete(E entity);
 	
 	EntityManager getEntityManager();
 	

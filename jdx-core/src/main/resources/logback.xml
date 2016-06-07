@@ -16,9 +16,9 @@
 	</logger>
 
 <!-- Activar para añadir log en hibernate -->
-<!-- 	<logger name="org.hibernate.SQL" level="DEBUG" /> -->
+	<logger name="org.hibernate.SQL" level="DEBUG" />
 
-<!-- 	<logger name="org.hibernate.type" level="TRACE" /> -->
+	<logger name="org.hibernate.type" level="TRACE" />
 
 	<root level="info">
 		<appender-ref ref="STDOUT" />

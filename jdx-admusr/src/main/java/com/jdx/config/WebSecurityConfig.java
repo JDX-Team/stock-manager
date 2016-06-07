@@ -54,7 +54,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService customUserDetailsService() {
     	return new DatabaseUserDetailsService();
     }
-    
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -91,6 +90,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .and()
           .httpBasic();
        
-      //http.csrf();
+      http.csrf();
     }
 }

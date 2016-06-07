@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -67,9 +66,9 @@ public class UserRestController extends GenericController<UserEntity> {
 	    @RequestMapping(value= "/{id}", 
 	            method = {RequestMethod.GET})
 	    @ResponseBody
-	    public UserEntity getDetail(@PathVariable("id") int id) {
-	        
-	        return userService.read(id);
+	    public UserEntity getDetail(//@PathVariable("id") int id,
+	    							@RequestBody UserEntity user) {
+	        return userService.read(user);
 	    }
 	 
 	    /**
@@ -83,7 +82,7 @@ public class UserRestController extends GenericController<UserEntity> {
 	                    method = {RequestMethod.PUT})
 	    @ResponseBody
 	    @ResponseStatus(HttpStatus.OK)
-	    public Object putUserUpdate(@PathVariable("id") int id, 
+	    public Object putUserUpdate(//@PathVariable("id") int id, 
 	                                   @RequestBody UserEntity user){
 	    	userService.update(user);
 	    	return generateMsg();
@@ -101,9 +100,9 @@ public class UserRestController extends GenericController<UserEntity> {
 	            method = {RequestMethod.DELETE})
 	    @ResponseBody
 	    @ResponseStatus(HttpStatus.OK)
-	    public Object deleteUser(@PathVariable("id") int id) throws InterruptedException{
-	    	
-	    	userService.delete(id);
+	    public Object deleteUser(//@PathVariable("id") int id,
+	    						@RequestBody UserEntity user) throws InterruptedException{
+	    	userService.delete(user);
 	    	
 	        return generateMsg();
 	    }

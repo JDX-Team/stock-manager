@@ -44,7 +44,7 @@ public class GenericRepositoryTest extends AbstractTransactionalJUnit4SpringCont
 	@Autowired
 	private IGenericRepository genRepo;
 
-	private int id;
+	private GenericEntity entity;
 	
 
 	/**
@@ -64,7 +64,7 @@ public class GenericRepositoryTest extends AbstractTransactionalJUnit4SpringCont
 		entity.setRels(rels);
 
 		GenericEntity en = genRepo.add(entity);
-		this.id = en.getId();
+		this.entity = en;
 	}
 
 	/**
@@ -113,13 +113,13 @@ public class GenericRepositoryTest extends AbstractTransactionalJUnit4SpringCont
 	 */
 	@Test
 	public void update() {
-		GenericEntity view = genRepo.read(this.id);
+		GenericEntity view = genRepo.read(this.entity);
 
 		view.setName("vista_modificado");
 
 		genRepo.update(view);
 
-		GenericEntity updatedView = genRepo.read(this.id);
+		GenericEntity updatedView = genRepo.read(this.entity);
 
 		Assert.assertNotNull(updatedView);
 		Assert.assertEquals("vista_modificado", updatedView.getName());
@@ -172,7 +172,7 @@ public class GenericRepositoryTest extends AbstractTransactionalJUnit4SpringCont
 
 	@Test
 	public void get() {
-		GenericEntity ent = genRepo.read(this.id);
+		GenericEntity ent = genRepo.read(this.entity);
 		Assert.assertNotNull(ent);
 	}
 
@@ -185,7 +185,7 @@ public class GenericRepositoryTest extends AbstractTransactionalJUnit4SpringCont
 	public void remove() {
 		int a = genRepo.list().size();
 		
-		genRepo.delete(this.id);
+		genRepo.delete(this.entity);
 		List<GenericEntity> views = genRepo.list();
 		int b = genRepo.list().size();
 		Assert.assertTrue(--a == b);
@@ -198,8 +198,9 @@ public class GenericRepositoryTest extends AbstractTransactionalJUnit4SpringCont
 	 */
 	@Test(expected = RepoTechnicalException.class)
 	public void removeKo() {
-
-		genRepo.delete(10000);
+		GenericEntity entity = new GenericEntity();
+		entity.setId(-1);
+		genRepo.delete(entity);
 	}
 
 	/**
