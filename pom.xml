@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jdx</groupId>
 	<artifactId>jdx</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${project.version}</version>
 	<packaging>pom</packaging>
 
 	<properties>
-
+		<project.version>0.0.1-SNAPSHOT</project.version>
 		<!-- Generic maven properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
