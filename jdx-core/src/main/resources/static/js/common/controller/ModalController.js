@@ -2,7 +2,7 @@
 var module = angular.module('app.common.controller');
 
 // Controller for modal
-module.controller('modalController', [ '$scope', '$uibModalInstance', 'title',
+module.controller('ModalController', [ '$scope', '$uibModalInstance', 'title',
 		'msg', function($scope, $uibModalInstance, title, msg) {
 			$scope.title = title;
 			$scope.msg = msg;

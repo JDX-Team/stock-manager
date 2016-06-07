@@ -68,6 +68,7 @@ public class UserDetailServiceImpl extends LdapUserDetailsMapper {
 		//Obtenemos los atributos para sacar el nombre de persona
 		Object cn = ctx.getObjectAttribute(name);
 		//Ahora creamos un object de usuario
+		
 		CustomUserDetails user = new CustomUserDetails();
 		UserDetails userLdap = essence.createUserDetails();
 		

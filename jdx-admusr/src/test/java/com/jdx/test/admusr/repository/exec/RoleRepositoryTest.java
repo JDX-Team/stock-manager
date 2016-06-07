@@ -30,20 +30,20 @@ public class RoleRepositoryTest extends AbstractTransactionalJUnit4SpringContext
 	 @Autowired
 	 private RoleRepository roleRepo;
 	 
-	 private int id;
+	 private RoleEntity entity;
 	 	 
 	 @Before
 	 public void setUp() {
 		
-		RoleEntity roleEntity = new RoleEntity();
+		entity = new RoleEntity();
 		//Rol id 1 -- > SuperAdmin
-		roleEntity.setId(1);
-		roleEntity.setRol("AdminNew");
+		//entity.setId(1);
+		entity.setRol("AdminNew");
 		
 		 
-		RoleEntity role = roleRepo.add(roleEntity);
+		RoleEntity role = roleRepo.add(entity);
 		
-		this.id= role.getId();
+		entity.setId(role.getId());
 	 }
 	 
 	 @Test
@@ -55,20 +55,20 @@ public class RoleRepositoryTest extends AbstractTransactionalJUnit4SpringContext
 	 
 	 @Test
 	 public void getRole(){
-		 RoleEntity role = roleRepo.read(this.id);
+		 RoleEntity role = roleRepo.read(entity);
 		 
 		 Assert.assertNotNull(role);
 	 }
 	 
 	 @Test
 	 public void updateRole(){
-		 RoleEntity role = roleRepo.read(this.id);
+		 RoleEntity role = roleRepo.read(entity);
 		 
 		 role.setRol("Role_mod");
 		 
 		 roleRepo.update(role);
 		 
-		 RoleEntity updatedRole = roleRepo.read(this.id);
+		 RoleEntity updatedRole = roleRepo.read(entity);
 		 
 		 Assert.assertNotNull(updatedRole);
 		 
@@ -78,7 +78,7 @@ public class RoleRepositoryTest extends AbstractTransactionalJUnit4SpringContext
 	 @Test
 	 public void removeRole(){
 
-		 roleRepo.delete(this.id);
+		 roleRepo.delete(entity);
 		 
 		 List<RoleEntity> roles = roleRepo.list();
 		 

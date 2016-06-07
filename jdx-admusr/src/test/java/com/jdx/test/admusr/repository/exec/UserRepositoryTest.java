@@ -18,6 +18,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.jdx.admusr.model.RoleEntity;
 import com.jdx.admusr.model.UserEntity;
+import com.jdx.admusr.repository.interfaces.RoleRepository;
 import com.jdx.admusr.repository.interfaces.UserRepository;
 import com.jdx.test.config.BootStrapInitializer;
 import com.jdx.test.config.InMemoryJpaDatabaseConfiguration;
@@ -31,28 +32,25 @@ public class UserRepositoryTest extends AbstractTransactionalJUnit4SpringContext
 	
 	 @Autowired
 	 private UserRepository userRepo;
+	 @Autowired
+	 private RoleRepository roleRepo;
 	 
-	 private int id;
+	 private UserEntity entity;
 	 	 
 	 @Before
 	 public void setUp() {
-		UserEntity userEntity = new UserEntity();
+		entity = new UserEntity();
 		 
-		userEntity.setUser("usuario_prueba2");
-		userEntity.setPassword("pwd");
+		entity.setUser("usuario_prueba2");
+		entity.setPassword("pwd");
 		
-		RoleEntity roleEntity = new RoleEntity();
-		//Rol id 1 -- > SuperAdmin
-		roleEntity.setId(1);
-		List<RoleEntity> roles = new ArrayList<RoleEntity>();
+		List<RoleEntity> roles = roleRepo.list();
+		  
+		entity.setRoles(roles);
 		 
-		roles.add(roleEntity);
-		 
-		userEntity.setRoles(roles);
-		 
-		UserEntity u = userRepo.add(userEntity);
+		UserEntity u = userRepo.add(entity);
 		
-		this.id= u.getId();
+		entity.setId(u.getId());
 	 }
 	 
 	 @Test
@@ -64,33 +62,33 @@ public class UserRepositoryTest extends AbstractTransactionalJUnit4SpringContext
 	 
 	 @Test
 	 public void getUser(){
-		 UserEntity user = userRepo.read(this.id);
+		 UserEntity user = userRepo.read(entity);
 		 
 		 Assert.assertNotNull(user);
 		 
-		 Assert.assertEquals(1, user.getRoles().size());
+		 Assert.assertEquals(roleRepo.list().size(), user.getRoles().size());
 	 }
 	 
 	 @Test
 	 public void updateUser(){
-		 UserEntity user = userRepo.read(this.id);
+		 UserEntity user = userRepo.read(entity);
 		 
 		 user.setUser("usuario_modificado");
 		 user.setPassword("pwd");
 		 
 		 userRepo.update(user);
 		 
-		 UserEntity updatedUser = userRepo.read(this.id);
+		 UserEntity updatedUser = userRepo.read(entity);
 		 
 		 Assert.assertNotNull(updatedUser);
 		 
-		 Assert.assertEquals("usuario_modificado",updatedUser.getUser());
+		 Assert.assertEquals("usuario_modificado", updatedUser.getUser());
 	 }
 	 
 	 @Test
 	 public void removeUser(){
 
-		 userRepo.delete(this.id);
+		 userRepo.delete(entity);
 		 
 		 List<UserEntity> users = userRepo.list();
 		 

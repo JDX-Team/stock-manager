@@ -5,7 +5,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,11 +65,10 @@ public class FunctionalityRestController extends GenericController<Functionality
 	    @RequestMapping(value= "/{id}", 
 	            method = {RequestMethod.GET})
 	    @ResponseBody
-	    public FunctionalityEntity getDetail(@PathVariable("id") int id) {
-	    	
-	    	LOGGER.debug("Retrieving functionality with id " + id);
-	        
-	        return funcService.read(id);
+	    public FunctionalityEntity getDetail(//@PathVariable("id") int id,
+	    		@RequestBody FunctionalityEntity functionality) {
+	    	LOGGER.debug("Retrieving functionality with id " + functionality.getId());
+	        return funcService.read(functionality);
 	    }
 	 
 	 

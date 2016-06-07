@@ -9,13 +9,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class CustomUserDetails implements UserDetails{
 
+	
+
 	private static final long serialVersionUID = -1033616207066910086L;
 	protected String name;
 	protected String password;
 	protected String username;
 	protected Collection<? extends GrantedAuthority> Authorities;
 	protected Set<String> rights;
-	
 	
 	public void setPassword(String password) {
 		this.password = password;

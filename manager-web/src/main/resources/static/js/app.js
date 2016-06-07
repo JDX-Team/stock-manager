@@ -1,5 +1,5 @@
 var app = angular.module('app', [
-	                          'app.common',
+                              'app.common',
 	                          'app.admusr',
 	                          'app.stkmng',//Referencia al aplicativo stockManager
 	                          'ngCookies',
@@ -9,191 +9,105 @@ var app = angular.module('app', [
 	                          'ui.router',
 	                          'angular.translate'
 	                          ])
-   .config(['$stateProvider', '$urlRouterProvider','$httpProvider','cfpLoadingBarProvider', '$translateProvider',
-            function ($stateProvider,$httpProvider,$cfpLoadingBarProvider,$translateProvider) {
-    	
-    	//Evaluamos el resto
-    	$stateProvider
-    	 .state('otherwise', {
-               url: '',
-               redirectTo: 'kpi.metricas.sitActual'
-         })
-         .state('kpi', {
-               url: '/kpi',
-               redirectTo: 'kpi.metricas.sitActual',
-               data: {
-                   displayName: 'KPI'
-               }
-         })
-         
-          .state('kpi.metricas', {
-               url: '/metricas',
-               redirectTo: 'kpi.metricas.sitActual',
-               data: {
-                   displayName: 'Métricas'
-               }
-         })
-         .state('kpi.metricas.sitActual', {
-               url: '/sitActual',
-               views: {
-                   'content@': {
-                       templateUrl: 'sitActual.html',
-                       controller: 'SitActualController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Situación actual de los indicadores'
-               }
-         })
-         .state('kpi.metricas.gestComer', {
-               url: '/GestComer',
-               views: {
-                   'content@': {
-                       templateUrl: 'detalleMetrica.html',
-                       controller: 'MetricaController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Gestión Comercial',
-                   metrica: 'operativaComercial'
-               }
-         })
-         .state('kpi.metricas.dComerInm', {
-               url: '/DComerInm',
-               views: {
-                   'content@': {
-                	   templateUrl: 'detalleMetrica.html',
-                       controller: 'MetricaController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Depuración Comercial de Inmuebles',
-                   metrica: 'depuracionInmueble'
-               }
-         })
-         .state('kpi.metricas.expCompl', {
-               url: '/ExpCompl',
-               views: {
-                   'content@': {
-                       templateUrl: 'detalleMetrica.html',
-                       controller: 'MetricaController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Expedientes Completos',
-                   metrica: 'documentacion'
-               }
-         })
-         .state('kpi.metricas.sanJuri', {
-               url: '/SanJuri',
-               views: {
-                   'content@': {
-                       templateUrl: 'detalleMetrica.html',
-                       controller: 'MetricaController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Saneamiento Jurídico',
-                   metrica: 'saneamientoJuridico'
-               }
-         })
-         .state('kpi.metricas.segObras', {
-               url: '/SegObras',
-               views: {
-                   'content@': {
-                       templateUrl: 'detalleMetrica.html',
-                       controller: 'MetricaController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Seguimiento Obras',
-                   metrica: 'obraEnCurso'
-               }
-         })
-         .state('kpi.metricas.gestSuelo', {
-               url: '/GestSuelo',
-               views: {
-                   'content@': {
-                       templateUrl: 'detalleMetrica.html',
-                       controller: 'MetricaController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Gestión Suelos',
-                   metrica: 'gestionSuelo'
-               }
-         })
-         .state('kpi.metricas.gastoCoste', {
-               url: '/GastoCoste',
-               views: {
-                   'content@': {
-                       templateUrl: 'detalleMetrica.html',
-                       controller: 'MetricaController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Gastos / Costes',
-                   metrica: 'gastosCostes'
-               }
-         })
-         .state('kpi.informes', {
-               url: '/informes',
-               views: {
-                   'content@': {
-                       templateUrl: 'cuadroMando.html',
-                       controller: 'CuadroMandoController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Informes'
-               }
-         })
-         .state('kpi.informes.cuadroMando', {
-               url: '/cuadroMando',
-               views: {
-                   'content@': {
-                       templateUrl: 'cuadroMando.html',
-                       controller: 'CuadroMandoController',
-                       controllerAs: 'ctrl'
-                   }
-               },
-               data: {
-                   displayName: 'Cuadro de Mandos'
-               }
-         })
-    	.state('kpi.informes.manual', {
-            url: '/manualUsuario',
-            fileDownload: '../static/docs/Manual_de_Usuario_Metricas_v.1.3.pdf',
-            data: {
-                displayName: 'Cuadro de Mandos'
-            }
-      });
-    	
-        //CSRF headers names to fit spring csrf filter
-     //   $httpProvider.defaults.xsrfCookieName = 'XSRF-TOKEN';
-    //    $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
-        
-        //Desactiva spinner loading bar
-        $cfpLoadingBarProvider.includeSpinner  = false;
+   .config([
+            '$stateProvider',
+            '$urlRouterProvider',
+            '$httpProvider',
+            'cfpLoadingBarProvider',
+            '$translateProvider', 
+            function ($stateProvider, $urlRouterProvider, $httpProvider, $cfpLoadingBarProvider, $translateProvider) {
 
-        //httpInterceptor for manage request errors
-	//	$httpProvider.interceptors.push('httpErrorsInterceptor');
-		
-		//Translate config
-//		$translateProvider.preferredLanguage('en'); //this config will be ignored, backend have the locale config
-//		$translateProvider.useLoader('translateLoader', {url:'./messages'});
-//		$translateProvider.useSanitizeValueStrategy('escaped');
-		
-		
+            	/**
+            	 * Control de token de seguridad
+            	 */
+                //CSRF headers names to fit spring csrf filter
+//            	$httpProvider.defaults.xsrfCookieName = 'XSRF-TOKEN';
+//            	$httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
+
+            	
+            	
+            	/**
+            	 * Desactiva spinner loading bar
+            	 */
+            	$cfpLoadingBarProvider.includeSpinner  = false;
+
+            	/**
+            	 * httpInterceptor for manage request errors
+            	 */
+//      		$httpProvider.interceptors.push('httpErrorsInterceptor');
+            	
+            	/**
+            	 * Translate config
+            	*/
+            	$translateProvider.preferredLanguage('en'); //this config will be ignored, backend have the locale config
+            	$translateProvider.useLoader('translateLoader', {url:'./messages'});
+            	$translateProvider.useSanitizeValueStrategy('escaped');
+            	
+            	
+            	/**
+           	 	* Control de navegación
+           	 	*/
+            	
+		    	$stateProvider
+		    	 .state('otherwise', {
+		               url: '',
+		               redirectTo: 'index'
+		         })
+		         .state('index', {
+		        	   url: '/index',
+		               views: {
+		                   'content@': {
+		                       templateUrl: 'user-list.html',	//aún sin definir la pantalla incial
+		                       controller: 'UserListController', //aún sin definir la pantalla incial
+		                       controllerAs: 'ctrl'
+		                   }
+		               },
+		               data: {
+		                   displayName: 'AdmUser Manager Index'
+		               }
+		         })
+		         .state('admusr', {
+		        	 url: '/admusr',
+		        	 redirectTo: 'admusr.user'
+		//        	 views: {
+		//                 'content@': {
+		//                     templateUrl: 'user-list.html',	
+		//                     //aún sin definir la pantalla incial de ADMUSR redirigimos a user-list.html
+		//                     controller: 'UserListController', 
+		//                     //aún sin definir la pantalla incial de ADMUSR reifigimos al usercontroller
+		//                     controllerAs: 'ctrl'
+		//                 }
+		//             },
+		//             data: {
+		//                 displayName: 'AdmUser Manager Index'
+		//             }
+		         })
+		         .state('admusr.user', {
+		        	 url: '/admusr/user',
+		        	 views: {
+		                 'content@': {
+		                     templateUrl: 'user-list.html',	
+		                     controller: 'UserListController', 
+		                     controllerAs: 'ctrl'
+		                 }
+		             },
+		             data: {
+		                 displayName: 'User Manager Panel'
+		             }
+		         })
+		         .state('admusr.roles', {
+		        	 url: '/admusr/roles',
+		        	 views: {
+		                 'content@': {
+		                     templateUrl: 'role-list.html',	
+		                     controller: 'RoleListController', 
+		                     controllerAs: 'ctrl'
+		                 }
+		             },
+		             data: {
+		                 displayName: 'Role Manager Panel'
+		             }
+		         });
 }]);
 
 //Enable redirectTo on states

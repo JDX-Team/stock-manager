@@ -1,7 +1,5 @@
 package com.jdx.test.common.repository;
 
-import java.lang.reflect.ParameterizedType;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +16,6 @@ import com.jdx.test.common.repository.interfaces.IGenericRepository;
 @Repository
 @Transactional(propagation=Propagation.MANDATORY)
 public class DefaultGenericRepositoryImpl extends DefaultGenericRepository<GenericEntity> implements IGenericRepository{
-	
+
 
 }

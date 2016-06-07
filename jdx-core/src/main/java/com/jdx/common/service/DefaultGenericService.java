@@ -42,8 +42,8 @@ public abstract class DefaultGenericService<E> implements GenericService<E>{
 	}
 
 	@Override
-	public E read(int id) {
-		return repository.read(id);
+	public E read(E entity) {
+		return repository.read(entity);
 		
 	}
 
@@ -53,8 +53,8 @@ public abstract class DefaultGenericService<E> implements GenericService<E>{
 	}
 
 	@Override
-	public void delete(Integer id) {
-		repository.delete(id);
+	public void delete(E entity) {
+		repository.delete(entity);
 		
 	}
 

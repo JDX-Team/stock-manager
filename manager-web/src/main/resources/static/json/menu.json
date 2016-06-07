@@ -1,0 +1,22 @@
+[{
+    "id":"admusr",
+	"name":"Gest. Acceso",
+	"title":"Gestión de Acceso",
+	"url":"admusr",
+	"class":"icon fa fa-book",
+	"children":[
+				{
+				    "id":"admusr.user",
+					"name":"Usuarios",
+					"title":"Usuarios",
+					"url":"admusr.user"
+				},
+				{
+				    "id":"admusr.roles",
+					"name":"Roles Usuario",
+					"title":"Roles de Usuario",
+					"url":"admusr.roles"
+				}
+				]
+}
+]

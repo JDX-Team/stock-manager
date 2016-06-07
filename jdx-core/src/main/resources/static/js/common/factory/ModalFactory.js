@@ -11,7 +11,7 @@ module.factory('ModalFactory', function($resource, $uibModal) {
 				templateUrl : 'modal/modalQuestion.html',
 				windowTemplateUrl : 'modal/window.html',
 				backdrop : false,
-				controller : 'modalController',
+				controller : 'ModalController',
 				resolve : {
 					title : function() {
 						return title;
@@ -35,7 +35,7 @@ module.factory('ModalFactory', function($resource, $uibModal) {
 				templateUrl : 'modal/modalError.html',
 				windowTemplateUrl : 'modal/window.html',
 				backdrop : false,
-				controller : 'modalController',
+				controller : 'ModalController',
 				resolve : {
 					title : function() {
 						return "Error";
@@ -56,7 +56,7 @@ module.factory('ModalFactory', function($resource, $uibModal) {
 				templateUrl : 'modal/modal.html',
 				windowTemplateUrl : 'modal/window.html',
 				backdrop : false,
-				controller : 'modalController',
+				controller : 'ModalController',
 				resolve : {
 					title : function() {
 						return "Success";
@@ -75,7 +75,7 @@ module.factory('ModalFactory', function($resource, $uibModal) {
 				templateUrl : 'modal/modalInfo.html',
 				windowTemplateUrl : 'modal/window.html',
 				backdrop : false,
-				controller : 'modalController',
+				controller : 'ModalController',
 				resolve : {
 					title : function() {
 						return "Info";

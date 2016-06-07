@@ -55,8 +55,9 @@ public class ControllersRestController extends GenericController<ControllerEntit
 	public ControllerEntity getDetail(@PathVariable("id") int id) {
 
 		LOGGER.debug("Retrieving controller with id " + id);
-
-		return controllerService.read(id);
+		ControllerEntity entity = new ControllerEntity();
+		entity.setId(id);
+		return controllerService.read(entity);
 	}
 	
 }

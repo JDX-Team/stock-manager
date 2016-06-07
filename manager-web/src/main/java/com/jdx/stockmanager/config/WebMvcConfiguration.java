@@ -5,7 +5,6 @@ import java.util.Locale;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
@@ -96,6 +96,7 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         return engine;
     }
 
+    
     /**
      * Configura el view resolver de Thymeleaf.
      * <p/>
@@ -140,7 +141,11 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         configurer.setUseTrailingSlashMatch(false);
     }
     
-    
+    /**
+     * Configura el idioma por defecto del aplicativo
+     *
+     * @return el LocaleResolver configurado 
+     */
     @Bean
     public LocaleResolver localeResolver() {
         FixedLocaleResolver localeResolver = new FixedLocaleResolver();

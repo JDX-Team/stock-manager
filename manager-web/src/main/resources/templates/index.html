@@ -19,16 +19,15 @@
 <!-- datatables ================================================================= -->
 <link rel="stylesheet" href="./static/css/jquery.dataTables.min.css" />
 <link rel="stylesheet" href="./static/css/dataTables.bootstrap.css" />
-
-
 <!-- loading bar -->
 <link rel="stylesheet" href="./static/css/loading-bar.min.css" type='text/css' media='all' />
 <!-- Application styles -->
 <link rel="stylesheet" href="./static/css/style.css " />
 
 <!-- Script to store rights from logged user -->
-<!-- <script th:inline="javascript"> -->
-<!-- 		</script> -->
+<script th:inline="javascript">
+	var userRights = [[${#authentication.principal.rights}]];
+</script>
 
 </head>
 <body >

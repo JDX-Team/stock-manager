@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -67,9 +66,9 @@ public class RoleRestController extends GenericController<RoleEntity> {
 	    @RequestMapping(value= "/{id}", 
 	            method = {RequestMethod.GET})
 	    @ResponseBody
-	    public RoleEntity getDetail(@PathVariable("id") int id) {
-	        
-	        return roleService.read(id);
+	    public RoleEntity getDetail(//@PathVariable("id") int id,
+	    		 					@RequestBody RoleEntity role) {
+	        return roleService.read(role);
 	    }
 	 
 	    /**
@@ -83,7 +82,7 @@ public class RoleRestController extends GenericController<RoleEntity> {
 	                    method = {RequestMethod.PUT})
 	    @ResponseBody
 	    @ResponseStatus(HttpStatus.CREATED)
-	    public Object putRoleUpdate(@PathVariable("id") int id, 
+	    public Object putRoleUpdate(//@PathVariable("id") int id, 
 	                                   @RequestBody RoleEntity role){
 	    	roleService.update(role);
 	    	return generateMsg();
@@ -101,9 +100,9 @@ public class RoleRestController extends GenericController<RoleEntity> {
 	            method = {RequestMethod.DELETE})
 	    @ResponseBody
 	    @ResponseStatus(HttpStatus.CREATED)
-	    public Object deleteRole(@PathVariable("id") int id) throws InterruptedException{
-	    	
-	    	roleService.delete(id);
+	    public Object deleteRole(//@PathVariable("id") int id,
+	    		 				@RequestBody RoleEntity role) throws InterruptedException{
+	    	roleService.delete(role);
 	    	
 	        return generateMsg();
 	    }
