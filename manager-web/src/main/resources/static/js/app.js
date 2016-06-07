@@ -16,14 +16,6 @@ var app = angular.module('app', [
             'cfpLoadingBarProvider',
             '$translateProvider', 
             function ($stateProvider, $urlRouterProvider, $httpProvider, $cfpLoadingBarProvider, $translateProvider) {
-
-            	/**
-            	 * Control de token de seguridad
-            	 */
-                //CSRF headers names to fit spring csrf filter
-//            	$httpProvider.defaults.xsrfCookieName = 'XSRF-TOKEN';
-//            	$httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
-
             	
             	
             	/**

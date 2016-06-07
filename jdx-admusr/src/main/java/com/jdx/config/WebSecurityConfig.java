@@ -14,8 +14,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 import com.jdx.admusr.security.DatabaseUserDetailsService;
+import com.jdx.common.filter.CsrfHeaderFilter;
 
 /**
  * Fichero de configuracion de la Seguridad web para JDX
@@ -91,5 +93,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .httpBasic();
        
       http.csrf();
+      
+      http.addFilterBefore(new CsrfHeaderFilter(), FilterSecurityInterceptor.class);
+     
     }
 }
