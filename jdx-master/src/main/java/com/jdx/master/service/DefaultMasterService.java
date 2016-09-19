@@ -3,6 +3,7 @@ package com.jdx.master.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jdx.common.service.DefaultGenericService;
 import com.jdx.master.repository.interfaces.MasterRepository;
@@ -11,6 +12,7 @@ import com.jdx.master.service.interfaces.MasterService;
 // Required transactionality, if any method is invoked a transaction 
 // is initialized in case that none transaction exists
 
+@Service
 public class DefaultMasterService<E> extends DefaultGenericService<E> implements MasterService<E> {
 
 	@Autowired

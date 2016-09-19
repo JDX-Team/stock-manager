@@ -1,119 +1,139 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" ng-app="login">
 <head>
+
 <!-- Encoding -->
 <meta charset="UTF-8"></meta>
 <meta http-equiv="X-UA-Compatible" content="IE=11" />
 
 <!-- Title -->
-<title>Acceso</title>
+<title th:text="#{'app.title'}"></title>
 
 <!-- Bootstrap: Min css -->
 <link href="../static/css/bootstrap.min.css" rel="stylesheet"
-    type="text/css"
-    th:href="@{/static/css/bootstrap.min.css}" />
+	type="text/css" th:href="@{/static/css/bootstrap.min.css}" />
 
 <!-- Hojas de Estilos -->
 <link href="../static/css/styleLogin.css" rel="stylesheet"
-    type="text/css" />
+	type="text/css" />
 
+<!-- Hojan de estilos de material -->
+<link rel="stylesheet"
+	href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css"
+	type="text/css" />
 
 </head>
-<body>
-    <header>
-        <div class="contenedor">
-            <div class="logo">
-                <h1>Stock Manager</h1>
-            </div>
-            <h2>Stock Manager Panel</h2>
-        </div>
-        <div id="langBar" class="langToolbar">
-            <!--            <a id="linkPt" href="?lang=pt_PT"> <img -->
-            <!--                src="../../static/images/lang/pt_PT.png" id="imgLangPt" -->
-            <!--                class="langImg" th:src="@{/static/images/lang/pt_PT.png}" /> -->
-            <!--            </a> <a id="linkIt" href="?lang=it_IT"> <img -->
-            <!--                src="../../static/images/lang/it_IT.png" id="imgLangIt" -->
-            <!--                class="langImg" th:src="@{/static/images/lang/it_IT.png}" /> -->
-            <!--            </a> <a id="linkFr" href="?lang=fr_FR"> <img -->
-            <!--                src="../../static/images/lang/fr_FR.png" id="imgLangFr" -->
-            <!--                class="langImg" th:src="@{/static/images/lang/fr_FR.png}" /> -->
-            <!--            </a> -->
-            <a id="linkEs" href="?lang=es_ES"> <img
-                src="../static/images/lang/es_ES.png" id="imgLangEs"
-                th:src="@{/static/images/lang/es_ES.png}"
-                class="langImg" />
-            </a>
-            <!--  <a id="linkUk" href="?lang=en_GB"> <img  -->
-            <!--                src="../../static/images/lang/en_UK.png" id="imgLangUk" -->
-            <!--                class="langImg" th:src="@{/static/images/lang/en_UK.png}" /> -->
-            <!--            </a> <a id="linkDe" href="?lang=de_DE"> <img -->
-            <!--                src="../../static/images/lang/de_DE.png" id="imgLangDe" -->
-            <!--                class="langImg" th:src="@{/static/images/lang/de_DE.png}" /> -->
-            <!--            </a> -->
-        </div>
-    </header>
+<body flex="33">
+	<header layout="row" layout-align="center center"> </header>
+	<section role="main" layout="row" layout-align="center center"> <!--  -->
+		<div layout="column" layout-align="space-around center">
+			<hgroup class="header-login" layout="row" layout-align="center center">
+				<h1 th:text="#{'login.header.title'}"></h1>
+			</hgroup>
+			<form layout="column" layout-align="center center" role="form" th:action="@{/public/login}"
+				method="post" id="login-form">
 
-    <!-- Barra de Navegación Superior -->
-    <!-- Navigation bar -->
-    <nav class="menu">
-        <div class="container"></div>
-    </nav>
+				<input type="hidden" th:name="${_csrf.parameterName}"
+					th:value="${_csrf.token}" />
 
-    <!-- Lienzo -->
-    <div id="lienzo" class="container bs-lienzo">
+				<md-input-container class="md-block flex-gt-xs md-input-has-value" layout="column"
+					> <label for="input_85"
+					th:text="#{login.lbl.usuario}"></label> <input type="text"
+					class="ng-pristine ng-untouched ng-valid md-input ng-not-empty"
+					id="input_85" aria-invalid="false" style=""
+					th:placeholder="#{login.placeholder.usuario}" />
+				<div class="md-errors-spacer"></div>
+				</md-input-container>
 
-        <!-- Cuerpo Principal -->
-        <div role="main" class="container bs-principal">
+				<md-input-container class="md-block flex-gt-xs md-input-has-value" layout="column"
+					> <label for="input_85"
+					th:text="#{login.lbl.password}"></label> <input type="password"
+					class="ng-pristine ng-untouched ng-valid md-input ng-not-empty"
+					id="input_85" aria-invalid="false" style=""
+					th:placeholder="#{login.placeholder.password}" />
+				<div class="md-errors-spacer"></div>
+				</md-input-container>
 
-                <div class="header-login">
-                    <p class="login_title">Acceso a la aplicación</p>
-                </div>
-            <div class="form-login">
-                <form role="form" th:action="@{/public/login}" method="post"
-                   class="form-horizontal" id="login-form">
-                    <input type="hidden" th:name="${_csrf.parameterName}"
-                        th:value="${_csrf.token}" />
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="lblUsername"
-                            th:text="#{login.lbl.usuario}">Usuario</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputUsername"
-                                name="username" placeholder="Usuario"
-                                th:placeholder="#{login.placeholder.usuario}" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="lblPassword"
-                            th:text="#{login.lbl.password}">Contraseña</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword"
-                                name="password" placeholder="Contraseña"
-                                th:placeholder="#{login.placeholder.password}" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="">
-                            <button class="btn btn-default" type="submit"
-                                th:text="#{login.btn.acceso}">Entrar</button>
-                        </div>
-                    </div>
-                    <!--                    <h2 class="error_msg" th:text="${error}">Descripción del error en el acceso.</h2> -->
-                </form>
 
-            </div>
+				<md-button-container class="md-block" layout="column"> <md-button
+					class="md-raised md-warn md-button md-default-theme"
+					ng-disabled="form.$invalid"
+					th:title="#{'login.form.submit.button'}"
+					th:text="#{'login.form.submit.button'}"> </md-button> </md-button-container>
+			</form>
+			<h2 class="error_msg" th:text="${error}" layout="column">Descripción del error en el acceso.</h2>
+		</div>
+	</section>
 
-        </div>
-    </div>
+	<!-- Cuerpo Principal -->
+	<!-- 	<div role="main" layout="column" layout-align="center center"> -->
 
-    <!-- Pop-up de "Loading..." -->
-    <img id="loadDisplay" style="display: none;"
-        src="./static/images/loading.gif"
-        th:src="@{/static/images/loading.gif}" />
 
-    <!-- Pie de Página -->
-    <footer>
-        <img alt="jdxTeam" src="../static/images/jdxTeam.png" />
-        <div>&#169; Todos los derechos reservados 2016</div>
-    </footer>
+	<!-- 		<hgroup class="header-login" layout="row" flex="33"> -->
+	<!-- 			<h1 th:text="#{'login.header.title'}"></h1> -->
+	<!-- 		</hgroup> -->
+
+	<!-- 		<div class="form-login" layout="row" flex="33"> -->
+
+
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+
+
+
+	<!-- 	Pop-up de "Loading..." -->
+	<!-- 	<img id="loadDisplay" style="display: none;" -->
+	<!-- 		src="./static/images/loading.gif" -->
+	<!-- 		th:src="@{/static/images/loading.gif}" /> -->
+
+	<div class="designedBy" layout="row">
+		<h3>By Java Developers Team</h3>
+	</div>
+	<!-- Pie de Página -->
+	<footer layout="column">
+
+		<img alt="jdxTeam" src="../static/images/jdxTeam.png" />
+		<div>&#169; Todos los derechos reservados 2016</div>
+	</footer>
+
+
+	<script src="../static/js/lib/angular.min.js"></script>
+	<script src="../static/js/lib/angular-resource.min.js"></script>
+	<script src="../static/js/lib/angular-route.min.js"></script>
+	<script src="../static/js/lib/angular-cookies.min.js"></script>
+	<script src="../static/js/lib/angular-animate.min.js"></script>
+	<script src="../static/js/lib/loading-bar.min.js"></script>
+	<script src="../static/js/lib/angular-checklist-model.js"></script>
+	<script src="../static/js/lib/angular-translate.js"></script>
+	<script src="../static/js/lib/angular-ui-router.min.js"></script>
+	<script src="../static/js/lib/uiBreadcrumbs.js"></script>
+
+	<!-- Angular Material requires Angular.js Libraries -->
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+	<!-- Angular Material Library -->
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+	<!-- Bootstrap extensions ================================================== -->
+	<script src="../static/js/lib/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+
+	<!-- AngularJS application login factory========================================= -->
+	<script src="../static/js/login/factory/LoginFactory.js"
+		type="text/javascript"></script>
+
+	<!-- AngularJS application directives ========================================= -->
+
+	<!-- AngularJS application controller ========================================= -->
+	<script src="../static/js/login/controller/LoginController.js"
+		type="text/javascript"></script>
+
+	<!-- AngularJS application definition ========================================= -->
+	<script src="../static/js/login/login.js" type="text/javascript"></script>
 </body>
 </html>

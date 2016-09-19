@@ -29,8 +29,9 @@ public class AdmUsrServiceConfig {
     @Bean(name = "messageSource")
     public MessageSource configureMessageSource() {
     	ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:/locale/messages");
+        messageSource.setBasenames("classpath*:/locale/messages");
         messageSource.setCacheSeconds(5);
+        //messageSource.setCacheSeconds(-1);
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }

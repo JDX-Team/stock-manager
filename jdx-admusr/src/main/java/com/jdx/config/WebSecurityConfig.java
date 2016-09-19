@@ -67,6 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
    
       http
       	.authorizeRequests()
+      	.antMatchers("/public/").denyAll() //Se añade restriccion para que no se pueda acceder a /public y se quede la página en blanco
       	.antMatchers("/public/**").permitAll()
       	.antMatchers("/resources/**").permitAll()
       	.antMatchers("/static/**").permitAll()

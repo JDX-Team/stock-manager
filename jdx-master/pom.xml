@@ -10,12 +10,17 @@
 		<artifactId>jdx</artifactId>
 		<version>${project.version}</version>
 	</parent>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>com.jdx</groupId>
 			<artifactId>jdx-core</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.10</version>
 		</dependency>
 	</dependencies>
 

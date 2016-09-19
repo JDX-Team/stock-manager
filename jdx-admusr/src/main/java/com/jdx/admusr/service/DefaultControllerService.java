@@ -14,6 +14,7 @@ public class DefaultControllerService extends DefaultGenericService<ControllerEn
 	@Override
 	public ControllerEntity find(String controller) {
 		return ((ControllerRepository)getRepository()).find(controller);
+		
 	}
 
 
